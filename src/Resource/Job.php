@@ -523,7 +523,8 @@ class Job extends Resource
             $actionPath = 'jobs/'.$this->hydrate()->id;
         }
         $response = DetrackClientStatic::sendData($verb, $actionPath, []);
-        if ($response == null) {
+        $response = json_encode($response);
+        if ($response == "{}" || $response == null) {
             return true;
         } else {
             return false;
